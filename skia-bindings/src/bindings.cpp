@@ -2,7 +2,7 @@
 #include <tuple>
 #include <vector>
 #include <memory>
-
+// skia-bindings 绑定的相关头文件
 #include "bindings.h"
 // codec/
 #include "include/codec/SkEncodedOrigin.h"
@@ -80,6 +80,7 @@
 #include "include/docs/SkPDFDocument.h"
 #include "include/docs/SkPDFJpegHelpers.h"
 
+// 特效
 // effects/
 #include "include/effects/Sk1DPathEffect.h"
 #include "include/effects/Sk2DPathEffect.h"
@@ -102,6 +103,7 @@
 #include "include/effects/SkTableMaskFilter.h"
 #include "include/effects/SkTrimPathEffect.h"
 
+// 编码相关
 // encode/
 #include "include/encode/SkPngEncoder.h"
 #include "include/encode/SkJpegEncoder.h"
@@ -3066,6 +3068,7 @@ bool C_SkJpegEncoder_Encode(SkWStream* stream, const SkPixmap* pixmap,
     return SkJpegEncoder::Encode(stream, *pixmap, options);
 }
 
+// C_SkJpegEncoder_EncodeImage 编码 Jpeg EncodeImage
 SkData* C_SkJpegEncoder_EncodeImage(GrDirectContext* ctx, const SkImage* img, 
     int quality,
     SkJpegEncoder::Downsample downsample, 
