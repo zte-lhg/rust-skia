@@ -17,7 +17,7 @@ extern "C" void C_GpuUnreferencedTypes(skgpu::Origin *) {}
 //
 // core/SkSurface.h
 //
-
+// SKSurface replaceBackendTexture
 extern "C" bool C_SkSurface_replaceBackendTexture(
         SkSurface* self,
         const GrBackendTexture* backendTexture,
@@ -30,6 +30,7 @@ extern "C" bool C_SkSurface_replaceBackendTexture(
 // core/SkImageGenerator.h
 //
 
+// judge if the SkImageGenerator is Valid or not
 extern "C" bool C_SkImageGenerator_isValid(const SkImageGenerator* self, GrRecordingContext* context) {
     return self->isValid(context);
 }
@@ -39,11 +40,12 @@ extern "C" bool C_SkImageGenerator_isValid(const SkImageGenerator* self, GrRecor
 //
 
 // GrBackendRenderTarget
-
+// construct GrBackendRenderTarget Construct
 extern "C" void C_GrBackendRenderTarget_Construct(GrBackendRenderTarget* uninitialized) {
     new(uninitialized) GrBackendRenderTarget();
 }
 
+// C GrBackendRender_Target CopyConstruct
 extern "C" void C_GrBackendRenderTarget_CopyConstruct(GrBackendRenderTarget* uninitialized, const GrBackendRenderTarget* renderTarget) {
     new(uninitialized) GrBackendRenderTarget(*renderTarget);
 }
@@ -57,7 +59,7 @@ extern "C" void C_GrBackendRenderTarget_getBackendFormat(const GrBackendRenderTa
 }
 
 // GrBackendTexture
-
+// create a new GrBackendTexture
 extern "C" GrBackendTexture* C_GrBackendTexture_new() {
     return new GrBackendTexture();
 }
@@ -155,10 +157,12 @@ extern "C" void C_GrDirectContext_flushImage(GrDirectContext* self, SkImage* ima
     self->flush(sp(image));
 }
 
+// GrDirectContext FlushAndSubmitImage
 extern "C" void C_GrDirectContext_flushAndSubmitImage(GrDirectContext* self, SkImage* image) {
     self->flushAndSubmit(sp(image));
 }
 
+// use GrDirectContext compressedBackendFormat
 extern "C" void C_GrDirectContext_compressedBackendFormat(const GrDirectContext* self, SkTextureCompressionType compression, GrBackendFormat* result) {
     *result = self->compressedBackendFormat(compression);
 }
@@ -191,6 +195,7 @@ extern "C" bool C_GrRecordingContext_colorTypeSupportedAsSurface(const GrRecordi
 // gpu/GrYUVABackendTextures.h
 //
 
+// GrYUVBackendTexture construct 构造函数
 extern "C" void C_GrYUVABackendTextures_construct(
     GrYUVABackendTextures* uninitialized,
     const SkYUVAInfo& yuvaInfo,
